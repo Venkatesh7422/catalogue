@@ -71,14 +71,14 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                script {
-                    def params = [
-                        string(name: 'version', value: "$packageVersion"),
-                        string(name: 'environment', value: "$environment")
-                    ]
-                    build job: "catalogue-deploy", wait: true, parameters: [
-                }
-            }
+           script {
+             build job: "catalogue-deploy",
+                  wait: true,
+                  parameters: [
+                    string(name: 'version', value: "${packageVersion}"),
+                    string(name: 'environment', value: "dev")
+          ]
+}
         }
     }
     //psot build
